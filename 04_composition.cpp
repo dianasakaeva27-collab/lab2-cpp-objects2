@@ -1,5 +1,5 @@
 #include <iostream>
-
+// КЛАСС B — то, что вкладывается
 class Engine {
 private:
     int power;
@@ -16,14 +16,15 @@ public:
         std::cout << "Engine started (power=" << power << ")" << std::endl;
     }
 };
-
+// КЛАСС A — главный, который содержит
 class Car {
 private:
-    Engine engine;          // КОМПОЗИЦИЯ: объект (создаётся автоматически)
-    Engine* extraEngine;    // КОМПОЗИЦИЯ: указатель (создаём вручную)
+    Engine engine;          // КОМПОЗИЦИЯ: объект (создаётся автоматически)//  это объект класса B
+    Engine* extraEngine;    // КОМПОЗИЦИЯ: указатель (создаём вручную) // ← это указатель на объект класса B
 
 public:
     Car(int power, int extraPower) : engine(power) {
+        // создаём объект класса B для указателя
         std::cout << "Car() constructor" << std::endl;
         extraEngine = new Engine(extraPower);
     }
